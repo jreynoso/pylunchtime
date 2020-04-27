@@ -1,0 +1,7 @@
+-r requirements.txt
+boto3
+moto
+pylint
+pytest
+pytest-cov
+pytest-mock

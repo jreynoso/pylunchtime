@@ -1,0 +1,26 @@
+env.json
+.aws-sam/
+
+# Python
+**/__pycache__
+**/.pytest_cache
+**/*.egg-info
+**/*.pyc
+.coverage
+**/coverage.xml
+**/pytest_unit.xml
+pytestdebug.log
+venv
+
+# VSCode
+.vscode/
+
+# Idea
+.idea/
+
+# Terraform
+**/.terraform
+
+# build
+build/
+buildvenv/
