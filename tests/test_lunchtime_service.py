@@ -15,12 +15,12 @@ def test_process_lunch_request(mocker):
     assert len(response) == 2
     assert response[0].id == '1234'
     assert response[0].name == 'a restaurant'
-    assert response[0].image_url == 'http://afakeurl.co/img.png'
+    assert response[0].imageUrl == 'http://afakeurl.co/img.png'
     assert response[0].address == '1234 Some Place'
     assert response[0].rating == 4
     assert response[1].id == '5678'
     assert response[1].name == 'another restaurant'
-    assert response[1].image_url == 'http://afakeurl.co/img.png'
+    assert response[1].imageUrl == 'http://afakeurl.co/img.png'
     assert response[1].address == '5678 Some Other Place'
     assert response[1].rating == 3.5
 
