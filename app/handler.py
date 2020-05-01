@@ -1,4 +1,5 @@
 import googlemaps
+import json
 import logging
 import os
 import random
@@ -21,26 +22,11 @@ def lambda_handler(event, context):
     result = get_lunchtime_service().process_lunch_request(loc, mode)
     response_body = get_response_body(loc, mode, result)
     logger.debug(f'response_body={response_body}')
-    response = {
-        'status': '200',
-        'statusDescription': 'OK',
-        'headers': {
-            'cache-control': [
-                {
-                    'key': 'Cache-Control',
-                    'value': 'max-age=120'
-                }
-            ],
-            'content-type': [
-                {
-                    'key': 'Content-Type',
-                    'value': 'text/json'
-                }
-            ]
-        },
-        'body': response_body
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps(response_body),
     }
-    return response
 
 
 def get_query_params(event: dict):

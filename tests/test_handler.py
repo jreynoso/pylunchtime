@@ -1,4 +1,5 @@
 # pylint: skip-file
+import json
 from app import handler
 from app.lunch_option import LunchOption
 
@@ -29,9 +30,10 @@ def test_http_event(lambda_context, mocker):
     # then
     body = response['body']
     assert body is not None
-    assert body['suggestion'] is not None
-    assert body['options'] is not None
-    criteria = body['criteria']
+    data = json.loads(body)
+    assert data['suggestion'] is not None
+    assert data['options'] is not None
+    criteria = data['criteria']
     assert criteria is not None
     assert criteria['loc'] == '47.6174755835663,-122.2883706665018'
     assert criteria['mode'] == 'walk'
