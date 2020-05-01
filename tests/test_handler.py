@@ -11,8 +11,8 @@ def test_get_request_params():
     query_params = handler.get_query_params(event)
 
     # then
-    assert query_params['loc'][0] == '47.6174755835663,-122.2883706665018'
-    assert query_params['mode'][0] == 'walk'
+    assert query_params['loc'] == '47.6174755835663,-122.2883706665018'
+    assert query_params['mode'] == 'walk'
 
 
 def test_http_event(lambda_context, mocker):
@@ -62,7 +62,10 @@ TEST_EVENT = {
         'Accept': '*/*',
         'content-type': 'application/json; charset=UTF-8'
     },
-    'queryStringParameters': 'loc=47.6174755835663,-122.2883706665018&mode=walk',
+    'queryStringParameters': {
+        'loc': '47.6174755835663,-122.2883706665018',
+        'mode': 'walk'
+    },
     'pathParameters': 'null',
     'requestContext': {}
 }
