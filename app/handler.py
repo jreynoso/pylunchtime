@@ -2,7 +2,6 @@ import googlemaps
 import logging
 import os
 import random
-from urllib.parse import parse_qs
 from app.lunchtime_service import LunchtimeService
 from app.lunch_option import LunchOption
 
@@ -14,8 +13,8 @@ def lambda_handler(event, context):
     logger.debug(f'context={context}')
 
     query_params = get_query_params(event)
-    loc = query_params['loc'][0]
-    mode = query_params['mode'][0]
+    loc = query_params['loc']
+    mode = query_params['mode']
     logger.debug(f'loc={loc}')
     logger.debug(f'mode={mode}')
 
@@ -45,8 +44,7 @@ def lambda_handler(event, context):
 
 
 def get_query_params(event: dict):
-    query_params = event['queryStringParameters']
-    return parse_qs(query_params)
+    return event['queryStringParameters']
 
 
 def get_response_body(loc: str, mode: str, results: list):
